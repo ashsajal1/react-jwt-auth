@@ -1,29 +1,38 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response, Request } from "express";
 import jwt from "jsonwebtoken";
 
-interface RequestWithUser extends Request {
-  user: {
-    username: string;
-  };
+declare global {
+  namespace Express {
+    interface Request {
+      username: string;
+    }
+  }
 }
 
 export default function checkAuth(
-  req: RequestWithUser,
+  req: Request,
   res: Response,
   next: NextFunction
 ) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
+  // console.log(token)
+  // console.log("I'm callled")
 
-  if (token !== null) {
-    return res.status(401);
+  if (token === null) {
+    return res.status(401).json({error:"Jsonwebtoken is not found!"});
   }
 
-  jwt.verify(token, process.env.JWT_SECRET as string, (err: any, user: any) => {
-    if (err) {
-      return res.status(403);
-    }
+  jwt.verify(
+    token as string,
+    process.env.JWT_SECRET as string,
+    (err: any, username: any) => {
+      if (err) {
+        return res.status(403);
+      }
 
-    (req.user = user), next();
-  });
+      req.username = username;
+      next();
+    }
+  );
 }

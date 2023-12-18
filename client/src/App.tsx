@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react'
-
-import './App.css'
+import { Button } from '@radix-ui/themes';
 
 function App() {
-  const [count, setCount] = useState(false);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000")
+    fetch("http://localhost:4000/api/protected")
       .then((res) => res.json())
-      .then((res) => setCount(res.ok))
+      .then((res) => setData(res))
       .catch(err => console.log(err));
   }, []);
 
   return (
     <>
-      {count ? <p>get data from API</p> : <p>no data available!</p>}
+      {data ? <p>get data from API <Button>Get data</Button></p> : <p>no data available!</p>}
     </>
   )
 }
