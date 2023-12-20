@@ -1,4 +1,4 @@
-import { Button, Container, Flex, TextFieldInput } from "@radix-ui/themes"
+import { Button, Container, Flex, TextFieldInput, Text} from "@radix-ui/themes"
 import { useState } from "react"
 
 export default function SignUp() {
@@ -12,6 +12,7 @@ export default function SignUp() {
     }
     return (
         <Container size={'1'}>
+            <Text align={'center'} size={'6'} as="p" weight={'bold'} color="gray">Sign up</Text>
             <form onSubmit={() => handleSignup}>
                 <Flex direction={'column'} gap={'2'}>
                     <TextFieldInput type="text" onChange={(e) => setEmail(e.target.value)} />
