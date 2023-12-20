@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color:rgba(0,0,0,0.1);
+
+    .logo {
+        color: dodgerblue;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+    }
+}
