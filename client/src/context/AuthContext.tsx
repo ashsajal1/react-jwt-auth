@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext<{ state: any; dispatch: React.Dispatch<any> } | null>(null);
 
 export const authReducer = (state:any, action:any) => {
     switch(action.type) {
