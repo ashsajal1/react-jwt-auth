@@ -4,6 +4,7 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import checkAuth from "./middleware";
+import userRouter from "./routers/userRouter";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
+app.use("/api/user", userRouter)
 
 app.listen(4000, () => {
   console.log("im wokring");
