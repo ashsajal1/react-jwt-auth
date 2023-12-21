@@ -1,6 +1,11 @@
 import { prisma } from "../../prisma/client";
 import bcrypt from "bcrypt";
 import validator from "validator";
+import jwt from "jsonwebtoken"
+
+const createToken = () => {
+  
+}
 
 //Register new user
 export const registerUser = async (email: string, password: string) => {
