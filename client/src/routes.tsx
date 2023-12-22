@@ -5,6 +5,7 @@ import App from "./App";
 import Dashboard from "./pages/Dashboard";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Posts from "./pages/Posts";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: "dashboard",
                 element: <Dashboard />,
+            },
+            {
+                path: "posts",
+                element: <Posts />,
             },
         ]
     },
