@@ -11,14 +11,14 @@ export default function Navbar() {
   }
 
   const { state } = useAuth();
-  console.log(state?.user)
+  console.log(state.user)
 
   return (
     <nav className="navbar">
       <h3 className="logo">React-JWT-AUTH</h3>
       <div className="btn-group">
 
-        {state?.user ? (
+        {state.user ? (
           <Button onClick={handleLogout}>Logout</Button>
         ) : (
           <div className="btn-group">
